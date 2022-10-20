@@ -15,16 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('landingpage');
+});
 
-Route::get('/login', function() {
+Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/checkout', function() {
+Route::get('/checkout', function () {
     return view('checkout');
-});
+})->name('checkout');
 
-Route::get('/success', function() {
+Route::get('/success', function () {
     return view('success_checkout');
-});
+})->name('success');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
